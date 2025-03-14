@@ -1,0 +1,333 @@
+:root {
+    --primary-color: #E91E63;  /* Pink color for buttons */
+    --secondary-color: #009FFD;
+    --background-color: #f5f5f5;
+    --text-color: #fff;
+    --nav-button-bg: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #040B14;  /* Dark background color */
+    color: var(--text-color);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    background: transparent;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+}
+
+.nav-auth button {
+    padding: 0.5rem 1rem;
+    margin-left: 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-models {
+    background: var(--nav-button-bg);
+    color: var(--text-color);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    padding: 8px 20px;
+    margin-right: 10px;
+    transition: all 0.3s ease;
+}
+
+.btn-dashboard {
+    background: var(--primary-color);
+    color: var(--text-color);
+    border: none;
+    border-radius: 50px;
+    padding: 8px 20px;
+    transition: all 0.3s ease;
+}
+
+.hero {
+    text-align: center;
+    padding: 6rem 2rem;
+    background: 
+        linear-gradient(to bottom, rgba(4, 11, 20, 0.7), rgba(4, 11, 20, 0.7)),  /* Dark overlay */
+        url('Images/pexels-francesco-ungaro-998641-2.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    position: relative;
+    min-height: 60vh;  /* Ensure minimum height for the hero section */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(to right, #E91E63, #9C27B0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+    color: rgba(255, 255, 255, 0.9);  /* Slightly increased opacity for better visibility */
+    position: relative;
+    z-index: 2;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);  /* Subtle text shadow for better readability */
+}
+
+/* Remove unused classes */
+.hero-buttons,
+.btn-start-creating,
+.btn-join-discord,
+.discord-icon {
+    display: none;
+}
+
+.gallery {
+    padding: 2rem;
+    background-color: #040B14;  /* Changed to match the dark theme */
+    position: relative;
+    z-index: 1;
+}
+
+.filters {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding: 0 1rem;
+}
+
+.filter {
+    padding: 0.5rem 1.5rem;
+    border: none;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.filter.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.artwork-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    padding: 0 1rem;
+    max-width: 2000px;
+    margin: 0 auto;
+}
+
+.artwork-card {
+    position: relative;
+    cursor: pointer;
+    aspect-ratio: 3/4;  /* Portrait orientation */
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.artwork-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Add responsive adjustments for smaller screens */
+@media screen and (max-width: 1400px) {
+    .artwork-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .artwork-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .artwork-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+footer {
+    text-align: center;
+    padding: 2rem;
+    background-color: #040B14;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 0;
+}
+
+.nav-brand h1 {
+    display: none;
+}
+
+.nav-links {
+    display: none;
+}
+
+/* Hover effects */
+.btn-models:hover,
+.btn-dashboard:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    overflow: auto;
+}
+
+.modal-content {
+    position: relative;
+    margin: auto;
+    padding: 20px;
+    max-width: 800px;
+    width: 90%;
+    background: #040B14;
+    border-radius: 12px;
+    margin-top: 50px;
+}
+
+.close {
+    color: #fff;
+    position: absolute;
+    right: 25px;
+    top: 10px;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: var(--primary-color);
+}
+
+#modalImage {
+    width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.prompt-container {
+    color: #fff;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+}
+
+.prompt-container h3 {
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.prompt-container p {
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.try-prompt-btn {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.try-prompt-btn:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+.nav-brand a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+.nav-brand a:hover {
+    opacity: 0.8;
+}
+
+.modal-nav {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    pointer-events: none;
+    z-index: 1010;
+}
+
+.nav-btn {
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    pointer-events: auto;
+}
+
+.nav-btn:hover {
+    background: var(--primary-color);
+    transform: scale(1.1);
+} 

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DeepMode Community Gallery</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <a href="https://deepmode.com/" target="_blank">
+                <img src="Images/DeepMode Logo.svg" alt="DeepMode" class="logo" id="deepmode-logo">
+            </a>
+        </div>
+        <div class="nav-auth">
+            <button class="btn-models">Models</button>
+            <button class="btn-dashboard">Dashboard</button>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <h1>Discover Amazing AI Artworks</h1>
+            <p class="hero-subtitle">A community-driven gallery showcasing the best AI-generated art</p>
+            <div class="hero-buttons">
+                <button class="btn-start-creating">Start Creating</button>
+                <button class="btn-join-discord">
+                    <img src="discord-icon.svg" alt="Discord" class="discord-icon">
+                    Join Discord
+                </button>
+            </div>
+        </section>
+
+        <section class="gallery">
+            <div class="filters">
+                <button class="filter active">All</button>
+                <button class="filter">Trending</button>
+                <button class="filter">Latest</button>
+                <button class="filter">Most Liked</button>
+            </div>
+            
+            <div class="artwork-grid">
+                <!-- Artwork cards will be dynamically inserted here -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2024 DeepMode Gallery. All rights reserved.</p>
+    </footer>
+
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-nav">
+                <button class="nav-btn prev-btn">&lt;</button>
+                <button class="nav-btn next-btn">&gt;</button>
+            </div>
+            <img id="modalImage" src="" alt="Full size artwork">
+            <div class="prompt-container">
+                <h3>Prompt Used:</h3>
+                <p id="modalPrompt"></p>
+                <button class="try-prompt-btn">Try This Prompt</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
