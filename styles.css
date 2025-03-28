@@ -69,61 +69,40 @@ body {
 
 .hero {
     text-align: center;
-    padding: 8rem 2rem;
+    padding: 6rem 2rem;
     background: 
-        linear-gradient(to bottom, 
-            rgba(4, 11, 20, 0.9), 
-            rgba(4, 11, 20, 0.7) 50%,
-            rgba(4, 11, 20, 0.9)
-        ),
+        linear-gradient(to bottom, rgba(4, 11, 20, 0.7), rgba(4, 11, 20, 0.7)),  /* Dark overlay */
         url('Images/pexels-francesco-ungaro-998641-2.webp');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed; /* Creates a parallax effect */
+    background-repeat: no-repeat;
     color: white;
     position: relative;
-    min-height: 70vh;
+    min-height: 60vh;  /* Ensure minimum height for the hero section */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at center, transparent 0%, rgba(4, 11, 20, 0.4) 100%);
-    pointer-events: none;
-}
-
 .hero h1 {
-    font-size: 4.5rem;
-    font-weight: 800;
+    font-size: 4rem;
+    font-weight: 700;
     margin-bottom: 1.5rem;
     background: linear-gradient(to right, #E91E63, #9C27B0);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     position: relative;
     z-index: 2;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    letter-spacing: -1px;
-    animation: fadeInUp 0.8s ease-out;
 }
 
 .hero-subtitle {
-    font-size: 1.4rem;
-    margin: 0.5rem 0 2rem;
-    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+    color: rgba(255, 255, 255, 0.9);  /* Slightly increased opacity for better visibility */
     position: relative;
     z-index: 2;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    max-width: 600px;
-    line-height: 1.6;
-    animation: fadeInUp 0.8s ease-out 0.2s backwards;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);  /* Subtle text shadow for better readability */
 }
 
 /* Remove unused classes */
@@ -145,181 +124,67 @@ body {
     display: flex;
     justify-content: center;
     gap: 1rem;
-    margin: 2rem auto;
+    margin-bottom: 2rem;
     padding: 0 1rem;
-    position: relative;
-    z-index: 3;
-    animation: fadeInUp 0.8s ease-out 0.6s backwards;
 }
 
 .filter {
-    padding: 0.6rem 1.8rem;
+    padding: 0.5rem 1.5rem;
     border: none;
-    border-radius: 25px;
-    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
     color: white;
     cursor: pointer;
     transition: all 0.3s ease;
-    font-size: 0.95rem;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.filter:hover {
-    background: rgba(255, 255, 255, 0.15);
-    transform: translateY(-2px);
+    font-size: 0.9rem;
 }
 
 .filter.active {
-    background: var(--primary-color);
+    background-color: var(--primary-color);
     color: white;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
 }
 
 .artwork-grid {
-    display: block;
-    column-count: 5;
-    column-gap: 8px;
-    padding: 8px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    padding: 0 1rem;
+    max-width: 2000px;
+    margin: 0 auto;
 }
 
 .artwork-card {
-    break-inside: avoid;
-    margin-bottom: 8px;
     position: relative;
-    width: 100%;
     cursor: pointer;
+    aspect-ratio: 3/4;  /* Portrait orientation */
+    border-radius: 8px;
     overflow: hidden;
-    border-radius: 4px;
-    transform: translateY(0);
-    transition: all 0.3s ease;
-}
-
-/* Add a permanent tint/overlay */
-.artwork-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(to bottom, 
-        rgba(4, 11, 20, 0.3) 0%,
-        rgba(4, 11, 20, 0.1) 40%,
-        rgba(4, 11, 20, 0.3) 80%,
-        rgba(4, 11, 20, 0.9) 100%
-    );
-    z-index: 1;
-    pointer-events: none;
-    transition: all 0.3s ease;
-}
-
-.artwork-card:hover::before {
-    background: linear-gradient(to bottom, 
-        rgba(4, 11, 20, 0.4) 0%,
-        rgba(4, 11, 20, 0.2) 40%,
-        rgba(4, 11, 20, 0.4) 80%,
-        rgba(4, 11, 20, 0.95) 100%
-    );
+    transition: transform 0.3s ease;
 }
 
 .artwork-card img {
     width: 100%;
-    height: auto;
-    display: block;
+    height: 100%;
     object-fit: cover;
-    border-radius: 4px;
-    transition: all 0.3s ease;
-    transform: scale(1);
+    display: block;
 }
 
-.artwork-card:hover img {
-    transform: scale(1.05);
-}
-
-/* Update hover content to work with the overlay */
-.hover-content {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 20px;
-    color: white;
-    z-index: 2;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.3s ease;
-}
-
-.artwork-card:hover .hover-content {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.hover-content .creator {
-    color: var(--primary-color);
-    font-weight: 600;
-    margin-bottom: 8px;
-    font-size: 0.9em;
-}
-
-.hover-content .prompt {
-    font-size: 0.8em;
-    line-height: 1.4;
-    max-height: 100px;
-    overflow-y: auto;
-    /* Add custom scrollbar */
-    scrollbar-width: thin;
-    scrollbar-color: rgba(233, 30, 99, 0.5) rgba(4, 11, 20, 0.2);
-}
-
-/* Custom scrollbar for Webkit browsers */
-.hover-content .prompt::-webkit-scrollbar {
-    width: 6px;
-}
-
-.hover-content .prompt::-webkit-scrollbar-track {
-    background: rgba(4, 11, 20, 0.2);
-}
-
-.hover-content .prompt::-webkit-scrollbar-thumb {
-    background-color: rgba(233, 30, 99, 0.5);
-    border-radius: 3px;
-}
-
-/* Add a subtle animation for the initial image load */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-.artwork-card img.loaded {
-    animation: fadeIn 0.5s ease forwards;
-}
-
-/* Responsive column counts */
+/* Add responsive adjustments for smaller screens */
 @media screen and (max-width: 1400px) {
     .artwork-grid {
-        column-count: 4;
+        grid-template-columns: repeat(4, 1fr);
     }
 }
 
 @media screen and (max-width: 1100px) {
     .artwork-grid {
-        column-count: 3;
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
 @media screen and (max-width: 768px) {
     .artwork-grid {
-        column-count: 2;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .artwork-grid {
-        column-count: 1;
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
@@ -359,14 +224,6 @@ footer {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.9);
     overflow: auto;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-}
-
-.modal.show {
-    opacity: 1;
-    visibility: visible;
 }
 
 .modal-content {
@@ -375,37 +232,23 @@ footer {
     padding: 20px;
     max-width: 800px;
     width: 90%;
-    background: rgba(4, 11, 20, 0.85);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    background: #040B14;
     border-radius: 12px;
     margin-top: 50px;
-    transform: translateY(20px);
-    transition: all 0.3s ease;
-}
-
-.modal.show .modal-content {
-    transform: translateY(0);
 }
 
 .close {
+    color: #fff;
     position: absolute;
     right: 25px;
     top: 10px;
-    color: #fff;
     font-size: 35px;
     font-weight: bold;
     cursor: pointer;
-    z-index: 1020; /* Ensure it's above other modal content */
-    padding: 10px; /* Larger clickable area */
-    line-height: 1;
-    transition: all 0.3s ease;
 }
 
 .close:hover {
     color: var(--primary-color);
-    transform: scale(1.1);
 }
 
 #modalImage {
@@ -414,107 +257,38 @@ footer {
     object-fit: contain;
     border-radius: 8px;
     margin-bottom: 20px;
-    transition: transform 0.3s ease;
 }
 
-#modalImage:hover {
-    transform: scale(1.02);
-}
-
-/* Remove background and border from the container */
 .prompt-container {
     color: #fff;
     padding: 20px;
-}
-
-/* Keep the border only around the prompt text */
-.prompt-section p {
-    margin-bottom: 20px;
-    line-height: 1.6;
-    padding: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.1);
     border-radius: 8px;
-    background: rgba(255, 255, 255, 0.05);
-}
-
-.prompt-container .creator {
-    color: var(--primary-color);
-    font-weight: 600;
-    margin-bottom: 15px;
-    font-size: 1.1em;
 }
 
 .prompt-container h3 {
-    margin-top: 20px;
     margin-bottom: 10px;
-    color: #fff;
-    font-size: 1em;
-    opacity: 0.8;
+    color: var(--primary-color);
 }
 
-.prompt-section {
-    margin-top: 20px;
+.prompt-container p {
+    margin-bottom: 20px;
+    line-height: 1.6;
 }
 
-.prompt-section h3 {
-    margin-bottom: 10px;
-}
-
-/* Update the button styles */
-.copy-prompt-btn {
-    background: linear-gradient(45deg, #E91E63, #9C27B0);
+.try-prompt-btn {
+    background: var(--primary-color);
     color: white;
     border: none;
     padding: 10px 20px;
     border-radius: 50px;
     cursor: pointer;
     transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
 }
 
-.copy-prompt-btn:hover {
+.try-prompt-btn:hover {
     transform: translateY(-2px);
     opacity: 0.9;
-    box-shadow: 0 6px 20px rgba(233, 30, 99, 0.4);
-}
-
-/* Add styles for copy success message */
-.copy-success {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(4, 11, 20, 0.9);
-    color: #fff;
-    padding: 12px 24px;
-    border-radius: 50px;
-    border: 1px solid var(--primary-color);
-    z-index: 1100;
-    animation: fadeInOut 2s ease forwards;
-}
-
-@keyframes fadeInOut {
-    0% { opacity: 0; transform: translate(-50%, 20px); }
-    20% { opacity: 1; transform: translate(-50%, 0); }
-    80% { opacity: 1; transform: translate(-50%, 0); }
-    100% { opacity: 0; transform: translate(-50%, -20px); }
-}
-
-/* Add styles for the modal creator name */
-.modal .creator-name {
-    color: var(--primary-color); /* This matches the pink color used in hover */
-    margin-bottom: 20px;
-}
-
-/* Add or update these styles */
-.creator-name {
-    color: var(--primary-color);
-    margin-bottom: 20px;
-    font-size: 1.17em;
-    font-weight: bold;
 }
 
 .nav-brand a {
@@ -542,15 +316,13 @@ footer {
 }
 
 .nav-btn {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    width: 50px;
-    height: 50px;
-    font-size: 28px;
-    opacity: 0.7;
+    background: rgba(0, 0, 0, 0.5);
     color: white;
+    border: none;
     border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -561,374 +333,5 @@ footer {
 
 .nav-btn:hover {
     background: var(--primary-color);
-    opacity: 1;
     transform: scale(1.1);
-    box-shadow: 0 0 20px rgba(233, 30, 99, 0.4);
-}
-
-.search-container {
-    width: 100%;
-    max-width: 600px;
-    margin: 20px auto;
-    display: flex;
-    align-items: center;
-    padding: 0 20px;
-    position: relative;
-    z-index: 3;
-    animation: fadeInUp 0.8s ease-out 0.4s backwards;
-}
-
-#searchInput {
-    width: 100%;
-    padding: 16px 24px 16px 50px;
-    border: 2px solid rgba(255, 255, 255, 0.1);
-    border-radius: 30px;
-    font-size: 16px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    color: white;
-    transition: all 0.3s ease;
-}
-
-#searchInput::placeholder {
-    color: rgba(255, 255, 255, 0.6);
-}
-
-#searchInput:focus {
-    background: rgba(255, 255, 255, 0.15);
-    border-color: rgba(233, 30, 99, 0.5);
-    outline: none;
-    box-shadow: 0 0 20px rgba(233, 30, 99, 0.2);
-}
-
-/* Add styles for the search icon */
-.search-icon {
-    position: absolute;
-    left: 35px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 20px;
-    height: 20px;
-    pointer-events: none;
-    color: rgba(255, 255, 255, 0.6);
-}
-
-/* Update search button styles */
-#searchButton {
-    position: absolute;
-    right: 35px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    padding: 10px;
-    color: rgba(255, 255, 255, 0.6);
-    transition: opacity 0.3s ease; /* Only transition opacity */
-    cursor: default; /* Default cursor */
-    opacity: 0.3; /* Dimmed by default */
-    pointer-events: none; /* Not clickable by default */
-}
-
-/* Style for when input has content */
-#searchButton.active {
-    opacity: 0.6;
-    cursor: pointer;
-    pointer-events: auto;
-}
-
-/* Add this to show when no results are found */
-.no-results {
-    text-align: center;
-    padding: 40px;
-    color: #666;
-    font-size: 18px;
-    width: 100%;
-}
-
-/* Add loading indicator styles */
-.loading-indicator {
-    text-align: center;
-    padding: 20px;
-    color: var(--text-color);
-    opacity: 0.7;
-}
-
-/* Add lazy loading styles */
-img.lazy {
-    opacity: 0;
-    transition: opacity 0.3s ease-in;
-}
-
-img.loaded {
-    opacity: 1;
-}
-
-/* Add loading skeleton animation */
-.artwork-card.loading::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, 
-        rgba(255,255,255,0.1) 0%, 
-        rgba(255,255,255,0.2) 50%, 
-        rgba(255,255,255,0.1) 100%);
-    animation: loading 1.5s infinite;
-    z-index: 1;
-}
-
-.artwork-card img.loaded {
-    opacity: 1;
-}
-
-@keyframes loading {
-    0% {
-        transform: translateX(-100%);
-    }
-    100% {
-        transform: translateX(100%);
-    }
-}
-
-/* Remove any loading/lazy loading related styles */
-.artwork-card.loading::before,
-img.lazy,
-img.loaded,
-.loading-indicator {
-    display: none;
-}
-
-/* Hero section mobile optimization */
-@media screen and (max-width: 768px) {
-    .hero {
-        padding: 4rem 1rem;
-    }
-
-    .hero h1 {
-        font-size: 2.5rem;
-    }
-
-    .hero-subtitle {
-        font-size: 1rem;
-        padding: 0 1rem;
-    }
-}
-
-/* Navigation mobile optimization */
-@media screen and (max-width: 768px) {
-    .navbar {
-        padding: 1rem;
-    }
-
-    .nav-auth {
-        display: flex;
-        gap: 0.5rem;
-    }
-
-    .nav-auth a {
-        padding: 0.4rem 0.8rem;
-        margin-left: 0;
-        font-size: 0.9rem;
-    }
-
-    .logo {
-        height: 32px;
-    }
-}
-
-/* Search container mobile optimization */
-@media screen and (max-width: 768px) {
-    .search-container {
-        padding: 0 1rem;
-    }
-
-    #searchInput {
-        font-size: 14px;
-        padding: 10px 16px;
-    }
-}
-
-/* Filters mobile optimization */
-@media screen and (max-width: 768px) {
-    .filters {
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        padding: 0 0.5rem;
-    }
-
-    .filter {
-        padding: 0.4rem 1rem;
-        font-size: 0.8rem;
-    }
-}
-
-/* Gallery grid mobile optimization */
-@media screen and (max-width: 768px) {
-    .gallery {
-        padding: 1rem;
-    }
-
-    .artwork-grid {
-        column-count: 2;
-        column-gap: 8px;
-        padding: 4px;
-    }
-
-    .artwork-card {
-        margin-bottom: 8px;
-    }
-
-    .hover-content {
-        padding: 12px;
-    }
-
-    .hover-content .creator {
-        font-size: 0.8em;
-    }
-
-    .hover-content .prompt {
-        font-size: 0.7em;
-        max-height: 80px;
-    }
-}
-
-/* Single column for very small screens */
-@media screen and (max-width: 480px) {
-    .artwork-grid {
-        column-count: 1;
-    }
-
-    .hover-content {
-        opacity: 1;
-        transform: translateY(0);
-        background: linear-gradient(to top, rgba(4, 11, 20, 0.9), rgba(4, 11, 20, 0.4), transparent);
-    }
-}
-
-/* Modal mobile optimization */
-@media screen and (max-width: 768px) {
-    .modal-content {
-        width: 95%;
-        margin-top: 20px;
-        padding: 15px;
-    }
-
-    #modalImage {
-        max-height: 60vh;
-    }
-
-    .prompt-section p {
-        padding: 10px;
-        font-size: 0.9em;
-    }
-
-    .modal-nav {
-        padding: 0 10px;
-    }
-
-    .nav-btn {
-        width: 40px;
-        height: 40px;
-        font-size: 20px;
-    }
-
-    .close {
-        right: 15px;
-        top: 5px;
-        font-size: 28px;
-    }
-
-    .copy-prompt-btn {
-        padding: 8px 16px;
-        font-size: 0.9em;
-    }
-}
-
-/* Touch device optimization */
-@media (hover: none) {
-    .artwork-card::before {
-        background: linear-gradient(to bottom, 
-            rgba(4, 11, 20, 0.2) 0%,
-            rgba(4, 11, 20, 0.1) 40%,
-            rgba(4, 11, 20, 0.3) 80%,
-            rgba(4, 11, 20, 0.8) 100%
-        );
-    }
-
-    .hover-content {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    .artwork-card:hover img {
-        transform: none;
-    }
-
-    .artwork-card:hover {
-        transform: none;
-    }
-}
-
-/* Update the tag styles */
-.hover-content .tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4px;
-    margin-bottom: 8px;
-}
-
-.hover-content .tag {
-    background: rgba(233, 30, 99, 0.2);
-    border: 1px solid rgba(233, 30, 99, 0.3);
-    color: #fff;
-    padding: 2px 8px;
-    border-radius: 12px;
-    font-size: 0.7em;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.hover-content .tag:hover {
-    background: rgba(233, 30, 99, 0.4);
-    transform: translateY(-1px);
-}
-
-/* Add specific colors for each tag type */
-.hover-content .tag[onclick*="#anime"] {
-    background: rgba(255, 87, 51, 0.2);
-    border-color: rgba(255, 87, 51, 0.3);
-}
-
-.hover-content .tag[onclick*="#realistic"] {
-    background: rgba(46, 196, 182, 0.2);
-    border-color: rgba(46, 196, 182, 0.3);
-}
-
-.hover-content .tag[onclick*="#fantasy"] {
-    background: rgba(111, 66, 193, 0.2);
-    border-color: rgba(111, 66, 193, 0.3);
-}
-
-.hover-content .tag[onclick*="#cyberpunk"] {
-    background: rgba(255, 64, 129, 0.2);
-    border-color: rgba(255, 64, 129, 0.3);
-}
-
-.hover-content .tag[onclick*="#gothic"] {
-    background: rgba(48, 51, 107, 0.2);
-    border-color: rgba(48, 51, 107, 0.3);
-}
-
-/* Add animation keyframes */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
 } 
